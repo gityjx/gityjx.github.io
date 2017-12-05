@@ -250,6 +250,145 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.yanjianxing.com/2017/09/01/g2p-example/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="David Yan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="David Yan的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/09/01/g2p-example/" itemprop="url">
+                  CMU深度学习预测单词音标和g2p库学习笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-01T15:07:41+08:00">
+                2017-09-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="cmu深度学习预测单词音标和g2p库学习笔记"><a href="#cmu深度学习预测单词音标和g2p库学习笔记" class="headerlink" title="cmu深度学习预测单词音标和g2p库学习笔记"></a>cmu深度学习预测单词音标和g2p库学习笔记</h1><blockquote>
+<blockquote>
+<p>最近在做基于LSTM预测英语单词发音的小项目，偶然发现cmu已经基于2layer和152units的LSTM做过了这么一个东西并在github上开源了出来，抱着学习的心态，一探究竟。</p>
+</blockquote>
+</blockquote>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>框架: tensorflow 1.0.0</p>
+<p>语言: python (2.7-3.5)</p>
+<p>平台: Linux/Windows</p>
+<p>由于改项目基于谷歌的tensorflow 1.0.0写成，由于tensorflow更新频繁且改动较大，建议在运行模型时候最好讲tensorflow改为1.0.0版本，否则报错（不改tf版本改源码也可以，请斟酌选择），我在ubuntu 16.04+ python 2.7.12 + tensorflow 1.0.0上亲测成功！</p>
+<h2 id="注意点（亲踩，绕道）"><a href="#注意点（亲踩，绕道）" class="headerlink" title="注意点（亲踩，绕道）"></a>注意点（亲踩，绕道）</h2><p>1， tensorflow版本必须是1.0.0，安装过高版本（截至目前tenforflow已经更新到1.3.0）的tensorflow再用pip安装1.0.0可能会安装不上，请自行下载相对应版本进行本地安装</p>
+<p>2， </p>
+<h2 id="下载相关文件"><a href="#下载相关文件" class="headerlink" title="下载相关文件"></a>下载相关文件</h2><p>下面给出几个链接与该代码有关的文件</p>
+<p>1，<a href="https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.8.0-cp27-none-linux_x86_64.whl" target="_blank" rel="external">linux下tensorflow1.0.0安装包</a></p>
+<p>2， <a href="https://github.com/cmusphinx/g2p-seq2seq" target="_blank" rel="external">github上给p源码</a></p>
+<p>3， <a href="https://sourceforge.net/projects/cmusphinx/files/G2P%20Models/g2p-seq2seq-cmudict.tar.gz/download" target="_blank" rel="external">sourceforge已经用改代码训练好的模型</a></p>
+<p>4，<a href="https://sourceforge.net/projects/cmusphinx/files/G2P%20Models/phonetisaurus-cmudict-split.tar.gz" target="_blank" rel="external">CMU的English字典(包括trainset和testset)</a></p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="1、使用已经训练好的模型进行预测"><a href="#1、使用已经训练好的模型进行预测" class="headerlink" title="1、使用已经训练好的模型进行预测"></a>1、使用已经训练好的模型进行预测</h2><p>1.1、下载了源码之后，进入源码主目录运行以下命令将改功能安装到Linux 系统当中<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python setup.py install</div></pre></td></tr></table></figure></p>
+<p>注意添加到系统的命令是 <code>g2p-seq2seq</code> ， 默认安装位置在 <code>/usr/local/bin</code> 后面会多次用到这一命令。</p>
+<p>1.2、你也可以不安装直接shi用交互模式运行</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://www.yanjianxing.com/2017/07/09/smart-questions/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1008,7 +1147,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
